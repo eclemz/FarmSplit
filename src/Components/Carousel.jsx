@@ -59,7 +59,7 @@ const Carousel = () => {
   };
 
   return (
-    <section className="carousel-section" aria-label="Promotional Carousel">
+    <section className="carousel-section w-full rounded-lg gap-4 self-stretch lg:mx-auto overflow-hidden" aria-label="Promotional Carousel">
       <Slider {...settings} className="">
         {CarouselData.map((item, idx) => (
           <article

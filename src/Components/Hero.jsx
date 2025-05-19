@@ -1,5 +1,5 @@
 import React from "react";
-import Carousel from "/Users/ochiagha/farm-app/src/Components/Carousel.jsx";
+import Carousel from "./Carousel";
 import { MdKeyboardArrowRight } from "react-icons/md";
 // import { IoIosArrowRoundForward } from "react-icons/io";
 import { Buttons } from "./Buttons";

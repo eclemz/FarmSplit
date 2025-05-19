@@ -15,6 +15,7 @@ import Testimonial from "./Components/Testimonial.jsx";
 import FaqSection from "./Components/FaqSection.jsx";
 import Subscription from "./Components/Subscription.jsx";
 import Footer from "./Components/Footer.jsx";
+// import Carousel from "./Components/Carousel.jsx";
 // import GlowingIcons from "./Components/Test.jsx"
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <DashBoard />
         <div className="md:pt-[12rem] pt-[10rem]"> 
         <Hero />
+        {/* <Carousel /> */}
         <Cards data={cardData1} />
         <Promo />
         <Groups data={cardData3} />
