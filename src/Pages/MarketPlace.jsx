@@ -103,12 +103,12 @@ function MarketPlace({ searchQuery}) {
         </div>
         </div>
         <div className="h-16"></div>
-        <div className="lg:px-16 md:px-4 px-0 self-stretch">
+        <div className="lg:px-16 md:py-2 md:px-4 px-0 self-stretch">
         <BreadCrumbs/>
         </div>
     
         {/* Product grid */}
-          <section className="lg:pt-4 lg:pb-8 lg:px-16 md:py-4 md:px-8 px-4 pb-8 gap-2">
+          <section className="lg:pt-0 lg:pb-8 lg:px-16 md:py-4 md:px-8 px-4 pb-8 gap-2">
               <ProductCard data={sorted} disableLimit={true}
               />
           </section>

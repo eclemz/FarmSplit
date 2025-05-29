@@ -92,7 +92,7 @@ const DashBoard = ({ onSearch, searchQuery }) => {
         )}
       </div>
 
-      <main className="dashboard w-full bg-white flex flex-col justify-center self-stretch items-center lg:py-4 lg:px-14 lt:px-7 md:py-4 md:px-8 py-4 px-5 gap-4">
+      <main className="dashboard w-full bg-white flex flex-col justify-center self-stretch items-center lg:py-4 lg:px-16 lt:px-7 md:py-4 md:px-8 py-4 px-5 gap-4">
         <div className="flex lg:items-center md:items-end items-center gap-1">
           <a href="/">
             <img

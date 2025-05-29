@@ -77,7 +77,7 @@ function Product() {
   
   return (
     <main key={productId} >
-      <div className="fixed z-40 bg-white shadow w-full lg:px-12 lt:px-16 md:py-4 md:px-8 px-4" >
+      <div className="fixed z-40 bg-white shadow w-full lg:px-16 lt:px-16 md:py-4 md:px-8 px-4" >
         <Breadcrumbs />
       </div>
       <div className="h-20"></div>
