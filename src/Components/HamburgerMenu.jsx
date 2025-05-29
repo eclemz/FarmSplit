@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RiCloseLine } from "react-icons/ri";
-import { Buttons6 } from "./Buttons";
 import { Buttons } from "./Buttons";
+import { Link } from "react-router-dom";
 
 function HamburgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,6 +14,10 @@ function HamburgerMenu() {
       } else {
         document.body.style.overflow = "auto"; // Enable scrolling
       }
+  };
+  const handleLinkClick = () => {
+    setIsOpen(false);
+    document.body.style.overflow = "auto";
   };
 
   return (
@@ -27,7 +31,7 @@ function HamburgerMenu() {
       </button>
 
       <div
-        className={`fixed flex flex-col top-0 left-0 h-screen pt-4 pr-4 bg-[#FFF1EF] text-[#424242] transform transition-transform duration-300 border-r-2 rounded-r-2xl z-50 ${
+        className={`fixed flex flex-col top-0 left-0 h-screen lg:w-[20rem] md:w-[20rem] lt:w-[20rem] w-[16.313rem]  pt-4 pr-4 bg-[#FFF1EF] text-[#424242] transform transition-transform duration-300 border-r-2 z-50 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -38,53 +42,53 @@ function HamburgerMenu() {
             <RiCloseLine className="h-5 w-5"/>
           </button>
 
-        <div className="flex flex-col w-[20rem]  md:py-14 lg:px-8 px-4 lg:gap-8 gap-5">
+        <div className="flex flex-col lg:w-[20rem]  md:w-[20rem] lt:w-[20rem] w-[16.313rem] md:py-14 lg:px-8 px-4 lg:gap-8 gap-5">
             
-            <Buttons className={`md:hidden block mt-8 self-stretch !text-base !font-bold`}>Register / Login</Buttons>
+            <Buttons className={`md:hidden block mt-8 self-stretch !text-xs !font-bold`}>Register / Login</Buttons>
 
           <ul className="menulist flex flex-col justify-center items-start gap-4 self-stretch">
-            <li>
-              <Buttons6 className="lg:text-sm text-base font-bold text-[#424242] hover:bg-gray-400 hover:bg-opacity-20 text-left w-full">
-                Home
-              </Buttons6>
+            <li >
+              <Link to="/" className="flex w-full" onClick={handleLinkClick}>
+               <span className="flex lg:text-sm text-xs font-bold text-left">Home</span> 
+              </Link>
             </li>
             <li>
-              <Buttons6 className="lg:text-sm text-base font-bold text-[#424242] hover:bg-gray-400 hover:bg-opacity-20 text-left w-full">
-                About Us
-              </Buttons6>
+             <Link to="#" className="flex w-full">
+               <span className="flex lg:text-sm text-xs font-bold text-left">About Us</span> 
+              </Link>
             </li>
             <li>
-              <Buttons6 className="lg:text-sm text-base font-bold text-[#424242] hover:bg-gray-400 hover:bg-opacity-20 text-left w-full">
-                Services
-              </Buttons6>
+              <Link to="#" className="flex w-full">
+               <span className="flex lg:text-sm text-xs font-bold text-left">Services</span> 
+              </Link>
             </li>
             <li>
-              <Buttons6 className="lg:text-sm text-base font-bold text-[#424242] hover:bg-gray-400 hover:bg-opacity-20 text-left w-full">
-                Contact
-              </Buttons6>
+              <Link to="#" className="flex w-full">
+               <span className="flex lg:text-sm text-xs font-bold text-left">Join a Group</span> 
+              </Link>
             </li>
           </ul>
 
           <ul className="menulist flex flex-col justify-center items-start gap-4 self-stretch">
             <li>
-              <Buttons6 className="lg:text-sm text-base font-bold text-[#424242] hover:bg-gray-400 hover:bg-opacity-20 text-left w-full">
-                FAQs
-              </Buttons6>
+              <Link to="#" className="flex w-full">
+               <span className="flex lg:text-sm text-xs font-bold text-left ">FAQs</span> 
+              </Link>
             </li>
             <li>
-              <Buttons6 className="lg:text-sm text-base font-bold text-[#424242] hover:bg-gray-400 hover:bg-opacity-20 text-left w-full">
-                Products
-              </Buttons6>
+              <Link to="/marketplace" className="flex w-full" onClick={handleLinkClick}>
+               <span className="flex lg:text-sm text-xs font-bold text-left ">Products</span> 
+              </Link>
             </li>
             <li>
-              <Buttons6 className="lg:text-sm text-base font-bold text-[#424242] hover:bg-gray-400 hover:bg-opacity-20 text-left w-full">
-                Services
-              </Buttons6>
+              <Link to="#" className="flex w-full">
+               <span className="flex lg:text-sm text-xs font-bold text-left ">Services</span> 
+              </Link>
             </li>
             <li>
-              <Buttons6 className="lg:text-sm text-base font-bold text-[#424242] hover:bg-gray-400 hover:bg-opacity-20 text-left w-full">
-                Contact
-              </Buttons6>
+              <Link to="#" className="flex w-full">
+               <span className="flex lg:text-sm text-xs font-bold text-left ">Contact</span> 
+              </Link>
             </li>
           </ul>
         </div>

@@ -1,40 +1,53 @@
-import React from "react";
+import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DashBoard from "./Components/DashBoard";
-import Hero from "./Components/Hero";
-import Cards from "./Components/Cards";
-import {
-  cardData1,
-  cardData3,
-  cardData4,
-  faqs,
-  footerData,
-} from "./data/cardData";
-import Promo from "./Components/Promo";
-import Groups from "./Components/Groups.jsx";
-import Testimonial from "./Components/Testimonial.jsx";
-import FaqSection from "./Components/FaqSection.jsx";
-import Subscription from "./Components/Subscription.jsx";
 import Footer from "./Components/Footer.jsx";
-// import Carousel from "./Components/Carousel.jsx";
-// import GlowingIcons from "./Components/Test.jsx"
+import WhatsappBtn from "./Components/WhatsappBtn.jsx";
+import HamburgerMenu from "./Components/HamburgerMenu.jsx";
+import { footerData } from "./data/cardData";
+import HomePage from "./Pages/HomePage.jsx";
+import MarketPlace from "./Pages/MarketPlace.jsx";
+import Subscription from "./Components/Subscription.jsx";
+import Product from "./Pages/Product.jsx";
+import ScrollToTop from "./Components/ScrollToTop";
+import { CartProvider } from "./Components/CartContext";
+import { Toaster } from "react-hot-toast";
 
 function App() {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  function handleSearch(query) {
+    setSearchQuery(query);
+  }
   return (
-    <div className="overflow-hidden">
-          <DashBoard />
-        <div className="md:pt-[12rem] pt-[10rem]"> 
-        <Hero />
-        {/* <Carousel /> */}
-        <Cards data={cardData1} />
-        <Promo />
-        <Groups data={cardData3} />
-        <Testimonial data={cardData4} />
-        <FaqSection data={faqs} />
-        <Subscription />
-        <Footer data={footerData} />
-        {/* <GlowingIcons /> */}
+    <CartProvider>
+      <Router>
+        <Toaster />
+        <ScrollToTop />
+        <div className="overflow-hidden">
+          <DashBoard onSearch={handleSearch} searchQuery={searchQuery} />
+          <HamburgerMenu />
+          <div className="md:pt-[7rem] pt-[7.5rem]">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route
+                path="/marketplace"
+                element={
+                  <MarketPlace
+                    searchQuery={searchQuery}
+                    onSearch={handleSearch}
+                  />
+                }
+              />
+              <Route path="/marketplace/:productId" element={<Product />} />
+            </Routes>
+          </div>
+          <Subscription />
+          <Footer data={footerData} />
+          <WhatsappBtn />
         </div>
-    </div>
+      </Router>
+    </CartProvider>
   );
 }
 

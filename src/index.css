@@ -143,6 +143,16 @@ footer li:hover {
   padding: 0.5rem 1rem;
   gap: 0.5rem;
   align-self: stretch;
+  color: #424242;
+}
+
+.menulist li:hover {
+  color: #FF6F61;
+  border-radius: 0.5rem;
+  background-color: rgba(156, 163, 175, 0.1);
+  font-weight: 700;
+  text-decoration: underline;
+  transition: 0.2s;
 }
 
 

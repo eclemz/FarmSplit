@@ -8,14 +8,14 @@ function Footer({ data }) {
     (footerData) => footerData.title && footerData.items
   );
   return (
-    <footer className="min-w-full flex flex-col items-start self-stretch md:gap-10 gap-8 py-10 lg:px-24 px-8 bg-[#FFF1EF]">
+    <footer className="min-w-full flex flex-col items-start self-stretch lt:gap-10 md:gap-10 gap-8 py-10 lg:px-24 lt:py-5 px-8 bg-[#FFF1EF]">
       <div className="hidden md:flex flex-col items-start self-stretch gap-8">
         <div className="flex flex-col items-start self-stretch gap-8">
           <div className="flex justify-between items-center self-stretch">
             <div className="flex items-end gap-1">
               <img
                 className="h-10 w-10 aspect-square"
-                src="./Images/Logo.svg"
+                src="/Images/Logo.svg"
                 alt="Logo"
               />
               <p className="lg:text-base md:text-sm text-[#09AF54] font-bold ">
@@ -200,12 +200,12 @@ function Footer({ data }) {
 
           <hr className="h-[2px] w-full text-[#C4C4C4]" />
 
-          <div className="flex justify-between items-center self-stretch py-2 md:gap-12">
+          <div className="flex justify-between items-center self-stretch py-2 lt:gap-0 md:gap-12">
             <ul className="flex items-center md:gap-12">
               <li className="flex items-center gap-2">
                 <a
                   href=""
-                  className="lg:text-base md:text-sm text-[#424242]"
+                  className="lg:text-base md:text-sm text-[#424242] hover:text-[#FF6F61]"
                   title="privacy"
                 >
                   Privacy
@@ -214,7 +214,7 @@ function Footer({ data }) {
               <li className="flex  items-center gap-2">
                 <a
                   href=""
-                  className="lg:text-base md:text-sm text-[#424242]"
+                  className="lg:text-base md:text-sm text-[#424242] hover:text-[#FF6F61]"
                   title="terms and condition"
                 >
                   Terms & Conditions
@@ -223,7 +223,7 @@ function Footer({ data }) {
               <li className="flex items-center gap-2">
                 <a
                   href=""
-                  className="lg:text-base md:text-sm text-[#424242]"
+                  className="lg:text-base md:text-sm text-[#424242] hover:text-[#FF6F61]"
                   title="sitemaps"
                 >
                   Sitemaps
@@ -234,22 +234,22 @@ function Footer({ data }) {
               <img
                 src="/Images/paystack.svg"
                 alt=""
-                className="w-[120px] lg:h-[4.063rem] md:h-[2.5rem] "
+                className="w-[120px] lg:h-[65px] md:h-[30px] "
               />
               <img
                 src="/Images/flutterwave.svg"
                 alt=""
-                className="w-[120px] lg:h-[4.063rem] md:h-[1.7rem] hover:text-[#FF6F61]"
+                className="w-[120px] lg:h-[60px] md:h-[30px] "
               />
               <img
                 src="/Images/mastercard_icon.png"
                 alt=""
-                className="w-[70px] lg:h-[4.063rem] md:h-[2.5rem] hover:text-[#FF6F61]"
+                className="lg:w-[70px] lg:h-[65px] md:w-[40px] md:h-[40px]"
               />
               <img
                 src="/Images/visa_icon.png"
                 alt=""
-                className="w-[70px] lg:h-[65px] md:h-[2.5rem] hover:text-[#FF6F61]"
+                className="lg:w-[70px] lg:h-[65px] md:w-[40px] md:h-[40px]"
               />
             </div>
           </div>
@@ -321,9 +321,22 @@ function Footer({ data }) {
                 title={section.title}
                 items={section.items}
                 isOpen={openIndex === index}
-                onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+                onToggle={() => setOpenIndex(openIndex === index ? null : index)} 
               />
             ))}
+          </div>
+          <div className="flex flex-col py-2 gap-4 items-start self-stretch">
+            <div className="flex justify-between items-center self-stretch">
+              <button className="flex text-xs items-center gap-2">Privacy</button>
+              <button className="flex text-xs  items-center gap-2">Terms & Conditions</button>
+              <button className="flex text-xs  items-center gap-2">Sitemaps</button>
+            </div>
+            <div className="flex justify-between items-center self-stretch">
+              <img src="/Images/Paystack.svg" alt="Paystack Logo"  className="h-5 w-24"/>
+              <img src="/Images/flutterwave.svg" alt="Flutterwave Logo" className="h-5 w-24" />
+              <img src="/Images/mastercard_icon.png" alt="mastercard Logo" className="h-8 w-8" />
+              <img src="/Images/visa_icon.png" alt="Visa Logo" className="h-8 w-8" />
+            </div>
           </div>
         </div>
       </section>

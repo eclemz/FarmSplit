@@ -9,7 +9,7 @@ import CarouselData from "../data/CarouselData.js";
 const NextArrow = ({ onClick }) => {
   return (
     <div
-      className="hidden md:block md:absolute right-4 top-1/2 transform -translate-y-1/2 z-10 cursor-pointer  text-white md:p-[1.6rem] rounded-full  transition duration-300"
+      className="hidden md:block md:absolute right-4 top-1/2 transform -translate-y-1/2 z-10 cursor-pointer  text-white lt:p2 md:p-2 rounded-full  transition duration-300"
       onClick={onClick}
     >
       <i className="bx bx-chevron-right text-5xl"></i>
@@ -20,7 +20,7 @@ const NextArrow = ({ onClick }) => {
 const PrevArrow = ({ onClick }) => {
   return (
     <div
-      className="hidden md:block md:absolute left-4 top-1/2 transform -translate-y-1/2 z-10 cursor-pointer  text-white md:p-[1.6rem] rounded-full transition duration-300"
+      className="hidden md:block md:absolute left-4 top-1/2 transform -translate-y-1/2 z-10 cursor-pointer  text-white lt:p-2 md:p-2 rounded-full transition duration-300"
       onClick={onClick}
     >
       <i className="bx bx-chevron-left  text-5xl"></i>
@@ -40,7 +40,7 @@ const Carousel = () => {
     arrows: true, // Show navigation arrows
     nextArrow: <NextArrow />, // Use custom Next Arrow
     prevArrow: <PrevArrow />, // Use custom Prev Arrow
-    fade: true, // Disable fade for smoother sliding effect
+    fade: false, // Disable fade for smoother sliding effect
     lazyLoad: "ondemand", // Load only visible slides
     cssEase: "ease-in-out", // Smooth easing for transitions
 
@@ -51,7 +51,7 @@ const Carousel = () => {
     ),
     customPaging: (i) => (
       <div
-        className="w-4 h-4 rounded-full opacity-75 hover:opacity-100 cursor-pointer transition-all duration-300"
+        className="md:w-3 md:h-3 w-2 h-2 rounded-full opacity-75 hover:opacity-100 cursor-pointer transition-all duration-300"
         style={{ border: "2px solid #09AF54" }}
       ></div>
     ),
@@ -59,7 +59,7 @@ const Carousel = () => {
   };
 
   return (
-    <section className="carousel-section w-full rounded-lg gap-4 self-stretch lg:mx-auto overflow-hidden" aria-label="Promotional Carousel">
+    <section className="carousel-section w-full rounded-3xl md:h-auto h-[256px] gap-4 self-stretch lg:mx-auto overflow-hidden" aria-label="Promotional Carousel">
       <Slider {...settings} className="">
         {CarouselData.map((item, idx) => (
           <article
@@ -71,12 +71,12 @@ const Carousel = () => {
             <img
               src={item.src}
               alt={item.alt}
-              className="w-full object-cover rounded-3xl md:h-[26.875rem] h-[16rem]"
+              className="w-full object-cover md:h-[26.875rem] h-[16rem]"
               loading="lazy"
             />
 
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-end rounded-3xl ">
-              <p className="text-white lg:text-[2rem] md:text-[1.75rem] text-xl font-bold lg:px-12 md:px-8 px-4 pb-16 leading-tight">
+            <div className="absolute inset-0 bg-black bg-opacity-30 flex items-end rounded-3xl ">
+              <p className="text-white lg:text-[2rem] md:text-[1.75rem] text-xl font-bold lg:px-12 lt:8 md:px-8 px-4 pb-16 leading-tight">
                 {item.alt.split("\n").map((line, index) => (
                   <React.Fragment key={index}>
                     {line}

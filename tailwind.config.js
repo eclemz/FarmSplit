@@ -15,6 +15,10 @@ module.exports = {
       animation: {
         ripple: 'ripple 1s linear infinite',
       },
+      screens: {
+        'lt': {'raw': '(min-width: 1024px and max-width: 1365px)'},
+        'lg': {'raw': '(min-width: 1366px)'},
+      },
     },
   },
   safelist: [

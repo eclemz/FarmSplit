@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Buttons } from "./Buttons";
+import { Buttons1, Buttons } from "./Buttons";
 
 function Promo() {
   const controls = useAnimation();
@@ -25,12 +25,12 @@ function Promo() {
 
   return (
     <div>
-      <section className="flex md:flex-col items-start self-stretch gap-16 lg:py-14 lg:px-24 md:py-14 md:px-8 py-8 px-5 relative overflow-hidden  bg-[#E6F7EE]">
-        <div className="flex flex-1 md:flex-row flex-col md:items-center items-start md:justify-normal justify-center md:gap-8 gap-4 self-stretch bg-[#B3E6CA] lg:p-10 md:py-10 md:px-4 py-4 px-2 relative overflow-hidden rounded-2xl">
+      <section className="flex md:flex-col items-start self-stretch gap-16 lg:py-14 lg:px-14 lt:px-8 lt:py-14 md:py-14 md:px-8 p-4 relative overflow-hidden  md:bg-[#E6F7EE] bg-[#FFD2CE]">
+        <div className="flex flex-1 md:flex-row flex-col md:items-center items-start md:justify-normal justify-center lt:gap-8 md:gap-8 gap-4 self-stretch md:bg-[#B3E6CA] lg:p-10 lt:py-10 lt:px-4 md:py-10 md:px-4 py-4 px-2 relative overflow-hidden rounded-2xl">
           <img
             src="/Images/chicken2.png"
             alt=""
-            className="hidden md:block lg:w-[18.75rem] lg:h-[18.75rem] md:w-[10.3125rem] md:h-[10.3125rem] aspect-square "
+            className="hidden md:block lg:w-[18.75rem] lg:h-[18.75rem] lt:w-[10.3125rem] lt:h-[10.3125rem] md:w-[10.3125rem] md:h-[10.3125rem] aspect-square "
           />
           <div className="md:hidden flex justify-between items-start self-stretch">
             <img
@@ -47,7 +47,7 @@ function Promo() {
           <div className="flex flex-col items-center flex-1 md:gap-8 gap-4 md:self-auto self-stretch">
             <div className="flex flex-col md:justify-normal justify-center md:items-center items-start self-stretch md:gap-4 gap-2">
               <div className="flex flex-col md:justify-normal justify-center md:items-center items-start md:gap-2 gap-1 md:self-auto self-stretch">
-                <div className="flex bg-[#FFF1EF] p-2 gap-2 justify-center items-center rounded-lg">
+                <div className="flex md:bg-[#FFF1EF] bg-[#FFF1EF] p-2 gap-2 justify-center items-center rounded-lg">
                   <h2 className="lg:text-sm md:text-xs text-[0.625rem] font-bold text-[#FF6F61]">
                     CATEGORIES
                   </h2>
@@ -77,13 +77,14 @@ function Promo() {
                 you won't want to miss!
               </p>
             </div>
-            <Buttons className={`self-stretch`}>Order Now</Buttons>
+            <Buttons className={`md:hidden block self-stretch`}>Order Now</Buttons>
+            <Buttons1 className={`hidden md:block self-stretch`}>Order Now</Buttons1>
           </div>
 
           <img
             src="/Images/chicken1.png"
             alt="Juicy fresh chicken with Easter discount offer"
-            className="hidden md:block  lg:w-[18.75rem] lg:h-[18.75rem] md:w-[10.3125rem] md:h-[10.3125rem] aspect-square"
+            className="hidden md:block  lg:w-[18.75rem] lg:h-[18.75rem] lt:w-[10.3125rem] lt:h-[10.3125rem] md:w-[10.3125rem] md:h-[10.3125rem] aspect-square"
           />
         </div>
       </section>

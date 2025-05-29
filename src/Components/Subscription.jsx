@@ -1,9 +1,9 @@
 import React from "react";
-import { Buttons } from "./Buttons";
+import { Buttons1 } from "../Components/Buttons";
 
 function Subscription() {
   return (
-    <section className="flex flex-col items-center self-stretch gap-8 lg:py-14 lg:px-60 md:py-14 md:px-20 py-14 px-5 bg-[#FAFAFA] ">
+    <section className="flex flex-col items-center self-stretch gap-8 lg:py-14 lg:px-60 lt:py-[5.188rem] lt:px-14 md:py-14 md:px-20 py-14 px-5 bg-[#FAFAFA] ">
       <div className="flex items-center self-stretch justify-center">
         <div className="flex flex-col justify-center items-center gap-4">
           <div className="flex p-2 justify-center items-center gap-2 rounded-lg bg-[#FFF1EF]">
@@ -25,15 +25,16 @@ function Subscription() {
           Email Address
         </label>
         <input
+          id="email"
           type="email"
           name="email"
           placeholder="Enter Email"
           aria-label="Enter your email address"
           className=" text-[#C4C4C4] md:text-base text-xs  focus:outline-none flex-1 bg-inherit"
         />
-        <Buttons className={"md:self-end self-stretch"} type="submit">
+        <Buttons1 className={"md:self-end self-stretch"} type="submit">
           Subscribe Now
-        </Buttons>
+        </Buttons1>
       </form>
     </section>
   );

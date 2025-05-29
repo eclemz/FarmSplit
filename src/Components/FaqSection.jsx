@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import clsx from "clsx";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
@@ -15,7 +15,7 @@ function FaqSection({ data }) {
 
   return (
     <section
-      className="faq-section flex flex-col items-center self-stretch gap-10 lg:py-14 lg:px-44 md:py-14 md:px-24 py-8 px-4
+      className="faq-section flex flex-col items-center self-stretch gap-10 lg:py-14 lg:px-44 lt:py-14 lt:px-24 md:py-14  md:px-24 py-8 px-4
     "
       style={{
         backgroundImage: "url('/Images/image23.png')",
@@ -82,24 +82,7 @@ function FaqSection({ data }) {
         <span className=" gap-8 lg:text-base md:text-sm text-xs font-bold">
           {question}
         </span>
-        {/* <span className="justify-center items-center">
-          {isOpen ? (
-            <span
-              class=" flex gap-2 bg-red-400 text-xl w-8 h-8 flex-shrink-0 text-[#FFF1EF] items-center justify-center rounded-full"
-              aria-hidden="true"
-            >
-              -
-            </span>
-          ) : (
-            <span
-              class="w-8 h-8 py-2 px-2 gap-4 text-xl flex-shrink-0"
-              aria-hidden="true"
-            >
-              +
-            </span>
-          )}
-        </span> */}
-
+        
         <span
                   className={`transform transition-transform  ${
                     isOpen ? "rotate-180" : "rotate-0"

@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from "react";
+import { useState, useRef } from "react";
 import { LuUserRound } from "react-icons/lu";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
+import { IoIosClose } from "react-icons/io";
 import HamburgerMenu from "./HamburgerMenu";
+import SlidingSearch from "./SliddingSearch";
+import { Typewriter } from "react-simple-typewriter";
+import { useCart } from "./CartContext";
+import Cart from "./Cart";
 
-const DashBoard = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+
+const DashBoard = ({ onSearch, searchQuery }) => {
   const [isVisible, setIsVisible] = useState(true);
-  const [currentText, setCurrentText] = useState("");
-  const [isCursorVisible, setIsCursorVisible] = useState(true); // For blinking cursor
-  const [isTypingActive, setIsTypingActive] = useState(true); // For controlling animation
+  const [query, setQuery] = useState("");
+  const [isInputFocused, setIsInputFocused] = useState(false);
+  const inputRef = useRef(null);
 
   // Array of placeholder texts
   const placeholders = [
@@ -19,73 +24,45 @@ const DashBoard = () => {
     "Search for farm produce...",
   ];
 
-  useEffect(() => {
-    if (!isTypingActive) return; // Stop typing if the user clicks the input
-
-    let textIndex = 0; // Index for the array of placeholders
-    let charIndex = 0; // Index for the characters in the current placeholder
-    let typingTimer;
-
-    const typeWriterEffect = () => {
-      if (charIndex < placeholders[textIndex].length) {
-        // Typing phase: Add one character at a time
-        setCurrentText((prev) =>
-          placeholders[textIndex].slice(0, charIndex + 1)
-        );
-        charIndex++;
-        typingTimer = setTimeout(typeWriterEffect, 80); // Typing speed
-      } else {
-        // Deleting phase: Remove one character at a time after a pause
-        setTimeout(() => {
-          const deleteEffect = () => {
-            if (charIndex > 0) {
-              setCurrentText((prev) => prev.slice(0, charIndex - 1)); // Remove one character
-              charIndex--;
-              typingTimer = setTimeout(deleteEffect, 30); // Deleting speed
-            } else {
-              // Move to the next placeholder after deleting is complete
-              textIndex = (textIndex + 1) % placeholders.length; // Loop through the placeholders
-              typeWriterEffect(); // Start typing the next placeholder
-            }
-          };
-          deleteEffect();
-        }, 2000); // Pause before starting deletion
-      }
-    };
-
-    typeWriterEffect();
-
-    return () => {
-      clearTimeout(typingTimer); // Clear timer on component unmount
-    };
-  }, [isTypingActive]);
-
-  useEffect(() => {
-    // Blinking cursor effect
-    const cursorBlinkingTimer = setInterval(() => {
-      setIsCursorVisible((prev) => !prev); // Toggle cursor visibility
-    }, 500); // Cursor blink speed
-
-    return () => clearInterval(cursorBlinkingTimer); // Clear blinking timer on component unmount
-  }, []);
-
-  const handleFocus = () => {
-    setCurrentText(""); // Clear the placeholder text when the input is clicked
-    setIsTypingActive(false); // Stop the typing animation
+  const handleFocus = () => setIsInputFocused(true);
+   
+  const handleBlur = (e) => {
+    if (query) {
+      setTimeout(() => {
+        if (inputRef.current) inputRef.current.focus();
+      }, 0);
+    } else {
+      setIsInputFocused(false); 
+    }
   };
 
-  const handleBlur = () => {
-    setIsTypingActive(true); // Resume the typing animation when clicking outside
+  const handleSearch = (e) => {
+    if (e) e.preventDefault(); // Prevent form submit reload
+    if (query.trim() !== "") {
+      if (onSearch) {
+        onSearch(query);          // send query to parent
+        setQuery("");             // clear input after search
+      } 
+      inputRef.current.blur();
+    }
   };
 
-  const handleSearch = () => {
-    console.log("Search Query:", searchQuery);
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") handleSearch(e);
   };
 
-  const handleClose = () => {
-    setIsVisible(false);
+  const handleInputClear = (e) => {
+    setQuery("");
+    if (inputRef.current) inputRef.current.focus();
+    if (e) e.preventDefault();
+    if (onSearch) onSearch("");
   };
 
+  const handleClose = () => setIsVisible(false);
+   const { getCartCount } = useCart();
+  const count = getCartCount();
+  
+ 
   return (
     <header className="sticky-dashboard">
       <div
@@ -115,11 +92,11 @@ const DashBoard = () => {
         )}
       </div>
 
-      <main className="dashboard w-full bg-[#FFF1EF] flex flex-col justify-center self-stretch items-center lg:py-4 lg:px-24 md:py-4 md:px-8 py-4 px-5 gap-4">
+      <main className="dashboard w-full bg-white flex flex-col justify-center self-stretch items-center lg:py-4 lg:px-14 lt:px-7 md:py-4 md:px-8 py-4 px-5 gap-4">
         <div className="flex lg:items-center md:items-end items-center gap-1">
           <a href="/">
             <img
-              src="./Images/Logo.svg"
+              src="/Images/Logo.svg"
               alt="Farm to Table Logo"
               className="lg:h-10 lg:w-10 md:h-8 md:w-8 w-6 h-6 aspect-square"
             />
@@ -132,20 +109,55 @@ const DashBoard = () => {
           className="flex lg:flex-row gap-14 lg:justify-center md:justify-center justify-between items-center self-stretch"
           aria-label="Main Navigation"
         >
-          
-          <HamburgerMenu/>
-          <div className="w-full gap-5 md:py-2 md:px-2 md:flex lg:flex lg:justify-center md:justify-center  items-center border border-gray-400 lg:rounded-xl md:rounded-lg shadow-sm hover:border-orange-600 hover:shadow-orange-600 bg-[#FFF1EF] focus-within:bg-white focus-within:border-orange-700 focus-within:shadow-md focus-within:shadow-orange-700 flex-1 cursor-pointer hidden">
+          <HamburgerMenu />
+          <form className="hidden relative w-full gap-5 md:py-1 md:px-1 md:flex lg:flex lg:justify-center md:justify-center  items-center border border-gray-400 lg:rounded-xl md:rounded-lg shadow-sm hover:border-orange-600 hover:shadow-orange-600 bg-white focus-within:bg-white focus-within:border-orange-700 focus-within:shadow-sm focus-within:shadow-orange-700 flex-1 cursor-pointer"
+          onSubmit={handleSearch}
+            role="search">
+            {!isInputFocused && !query && (
+              <div
+                className="absolute left-2 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none select-none
+                  lg:text-base md:text-[0.875rem] text-xs"
+                style={{ zIndex: 1 }}
+              >
+                <Typewriter
+                  words={placeholders}
+                  loop={0}
+                  cursor
+                  cursorStyle="|"
+                  typeSpeed={80}
+                  deleteSpeed={30}
+                  delaySpeed={2000}
+                />
+              </div>
+            )}
             <input
+              ref={inputRef}
               id="searchInput"
               type="text"
-              placeholder={`${currentText}${isCursorVisible ? "|" : ""}`} // Add blinking cursor
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onFocus={handleFocus} // Clear placeholder on focus
-              onBlur={handleBlur} // Resume placeholder animation on blur
-              className="lg:pl-2 lg:gap-5 flex-1 text-gray-800 focus:outline-none lg:text-base md:text-[0.875rem] font-normal focus:bg-white bg-[#FFF1EF] "
+              placeholder=''
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={handleKeyDown}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              className="lg:pl-2 lg:gap-5 flex-1 text-gray-800 focus:outline-none lg:text-base md:text-[0.875rem] font-normal focus:bg-white pr-8"
               aria-label="Search for products"
+              style={{ zIndex: 2, background: "transparent" }}
             />
-            {/* <div className="rounded-xl py-1 px-1"> */}
+
+            {(isInputFocused || query) && query && (
+              <button
+                type="button"
+                className=" flex h-4 w-4 justify-center items-center bg-gray-400 rounded-full text-gray-100 focus:outline-none z-10"
+                tabIndex={-1}
+                aria-label="Clear search"
+                onMouseDown={(e) => e.preventDefault()}
+                onClick={handleInputClear}
+              >
+                <IoIosClose className="flex self-center justify-center h-4 w-4" />
+              </button>
+            )}
+
             <button
               className="flex py-2 px-4 justify-center items-center bg-[#FF6F61] hover:bg-[#E86558] active:bg-[#B54F45] gap-2 rounded-lg"
               onClick={handleSearch}
@@ -154,17 +166,27 @@ const DashBoard = () => {
             >
               <IoSearch className="bx bx-search w-6 h-6 text-white self-center items-center justify-center flex lg:gap-[0.625rem] md:gap-[0.625rem] gap-[0.52rem]" />
             </button>
-            {/* </div> */}
-          </div>
+          </form>
 
           <div className="flex gap-4 items-center">
-            <button className="lg:hidden md:hidden flex justify-center items-center p-2 gap-2">
-              <IoSearch className="flex w-6 h-6 text-gray-600 justify-center items-center gap-[0.52rem]" />
+            {/* Mobile Search */}
+            <SlidingSearch className="md:hidden block" />
+            {/* Cart Icon with Count */}
+            <div className="relative group">
+              <button aria-label="View Cart" className=" w-10 h-10 relative flex items-center justify-center"
+              type="button">
+                <MdOutlineShoppingCart className=" justify-center h-6 w-6 text-gray-600 cursor-pointer shrink-0" />
+                {count > 0 && (
+                  <span className="absolute top-0 right-0 bg-red-500 text-white text-[0.625rem] rounded-full h-4 w-4 flex items-center justify-center"
+          >
+            {count}
+          </span>
+          )}
             </button>
-
-            <button aria-label="View Cart" className="w-10 h-10 ">
-              <MdOutlineShoppingCart className="h-6 w-6 text-gray-600 cursor-pointer shrink-0" />
-            </button>
+            <div className="absolute right-0 mt-0 z-50 w-80 hidden group-hover:block min-w-80">
+            <Cart />
+          </div>
+          </div>
             <div className="hidden md:flex lg:flex justify-center items-center p-1 rounded-full bg-white">
               <button
                 className=" items-center w-10 h-10 p-2 gap-2 rounded-full justify-center flex  bg-[#FF6F61] hover:bg-[#E86558] active:bg-[#B54F45]"

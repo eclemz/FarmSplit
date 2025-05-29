@@ -27,7 +27,7 @@ function Testimonial({ data }) {
     ),
     customPaging: (i) => (
       <div
-        className="w-3 h-3 rounded-full opacity-75 hover:opacity-100 cursor-pointer transition-all duration-300"
+        className="md:w-3 md:h-3 w-2 h-2 rounded-full opacity-75 hover:opacity-100 cursor-pointer transition-all duration-300"
         style={{ border: "2px solid #09AF54" }}
       ></div>
     ),
@@ -37,7 +37,7 @@ function Testimonial({ data }) {
   );
   return (
     <section
-      className="flex flex-col self-stretch items-center lg:py-14 lg:px-24 md:py-14 md:px-8 py-8 px-4 gap-8 bg-[#FFF1EF]"
+      className="flex flex-col self-stretch items-center lg:py-14 lg:px-24 lt:px-8 lt:py-14 md:py-14 md:px-8 py-8 px-4 gap-8 bg-[#FFF1EF]"
       aria-label="Customer Testimonials"
     >
       {/* for mobile  */}
@@ -47,7 +47,7 @@ function Testimonial({ data }) {
             className="flex items-center p-2 gap-2 rounded-lg  justify-center bg-white"
             aria-hidden="true"
           >
-            <h2 className="lg:text-sm md:text-xs text-[0.625rem] font-bold text-red-400">
+            <h2 className="text-[0.625rem] font-bold text-red-400">
               TESTIMONIAL
             </h2>
           </div>
@@ -75,20 +75,20 @@ function Testimonial({ data }) {
               aria-labelledby={`testimonial-name-${index}`}
               aria-describedby={`testimonial-text-${index}`}
             >
-              <p className="lg:text-xl md:text-lg text-sm text-[#424242] self-stretch">
+              <p className="text-sm text-[#424242] self-stretch">
                 {card.text}
               </p>
               <div className="flex flex-col items-start justify-center selft-stretch gap-2 ">
-                <h3 className="lg:text-xl md:text-lg text-sm text-[#424242] font-bold self-stretch">
+                <h3 className="text-sm text-[#424242] font-bold self-stretch">
                   {card.name}
                 </h3>
-                <p className="lg:text-base md:text-sm text-xs text-[#686868] ">
+                <p className="text-xs text-[#686868] ">
                   {card.desc}
                 </p>
                 <img
                   src={card.icon}
                   alt=""
-                  className="lg:w-[3.75rem] lg:h-[3.75rem] md:w-[3.25rem] md:h-[3.25rem] h-9 w-9"
+                  className="h-9 w-9"
                 />
               </div>
             </div>
@@ -131,21 +131,23 @@ function Testimonial({ data }) {
               aria-labelledby={`testimonial-name-${index}`}
               aria-describedby={`testimonial-text-${index}`}
             >
-              <p className="lg:text-xl md:text-lg text-sm text-[#424242] self-stretch">
+              <p className="lg:text-xl lt:text-lg md:text-lg text-sm text-[#424242] self-stretch">
                 {card.text}
               </p>
               <div className="flex flex-col items-start justify-center selft-stretch gap-2 ">
-                <h3 className="lg:text-xl md:text-lg text-sm text-[#424242] font-bold self-stretch">
+                <h3 className="lg:text-xl lt:text-lg md:text-lg text-sm text-[#424242] font-bold self-stretch">
                   {card.name}
                 </h3>
-                <p className="lg:text-base md:text-sm text-xs text-[#686868] ">
+                <p className="lg:text-base lt:text-sm md:text-sm text-xs text-[#686868] ">
                   {card.desc}
                 </p>
+           
                 <img
                   src={card.icon}
                   alt=""
-                  className="lg:w-[3.75rem] lg:h-[3.75rem] md:w-[3.25rem] md:h-[3.25rem] h-9 w-9"
+                  className="lg:w-[3.75rem] lg:h-[3.75rem] lt:w-[3.25rem] lt:h-[3.25rem] md:w-[3.25rem] md:h-[3.25rem] h-9 w-9"
                 />
+               
               </div>
             </div>
           </div>
