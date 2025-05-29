@@ -27,7 +27,7 @@ function App() {
         <div className="overflow-hidden">
           <DashBoard onSearch={handleSearch} searchQuery={searchQuery} />
           <HamburgerMenu />
-          <div className="md:pt-[7rem] pt-[7.5rem]">
+          <div className="md:pt-[8rem] pt-[7.5rem]">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route

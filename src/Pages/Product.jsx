@@ -75,14 +75,12 @@ function Product() {
     );
   }
   
-
-
   return (
     <main key={productId} >
-      <div className="fixed z-40 bg-white shadow w-full lg:px-12 lt:px-16 md:py-2 md:px-8 px-4" >
+      <div className="fixed z-40 bg-white shadow w-full lg:px-12 lt:px-16 md:py-4 md:px-8 px-4" >
         <Breadcrumbs />
       </div>
-      <div className="h-16"></div>
+      <div className="h-20"></div>
       <div className="flex md:flex-row flex-col items-center self-stretch lg:py-4 lg:px-16 pt-4 lt:px-16 pb-8 md:px-8 px-4 gap-8">
         {/* ... Product details for desktop... */}
         <div className="hidden lg:flex h-[31.625rem] w-full flex-col items-start gap-1 self-stretch flex-1">
