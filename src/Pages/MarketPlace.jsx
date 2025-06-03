@@ -103,7 +103,7 @@ function MarketPlace({ searchQuery}) {
         </div>
         </div>
         <div className="h-16"></div>
-        <div className="lg:px-16 md:py-2 md:px-4 px-0 self-stretch">
+        <div className="lg:px-16 md:py-2 md:px-4 px-3 self-stretch">
         <BreadCrumbs/>
         </div>
     

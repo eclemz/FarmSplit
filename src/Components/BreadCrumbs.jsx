@@ -38,7 +38,7 @@ const showBack = pathnames.length === 1;
         {showBack ? (
       <button
         onClick={() => navigate(-1)}
-        className="flex py-2 gap-4 bg-inherit items-center hover:underline text-[#424242] hover:text-[#FF6F61]"
+        className="flex py-2 gap-2 bg-inherit items-center hover:underline text-[#424242] hover:text-[#FF6F61]"
         type="button"
       >
         <IoIosArrowBack className="flex h-5 w-5 justify-center gap-2"/>
