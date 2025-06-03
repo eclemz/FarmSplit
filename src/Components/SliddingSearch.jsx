@@ -100,7 +100,7 @@ function SlidingSearch({ onSearch }) {
           onBlur={handleBlur}
           className={`
              bg-transparent outline-none
-            px-1 text-xs w-0 opacity-0
+            px-1 text-base w-0 opacity-0
             ${open ? "w-[15rem] opacity-100" : ""}
           `}
         />
