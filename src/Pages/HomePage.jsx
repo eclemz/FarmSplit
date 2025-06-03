@@ -33,7 +33,6 @@ function Home() {
       <Shelf data={products} className=""/>
       <Testimonial data={cardData4} />
       <FaqSection data={faqs} />
-      <Subscription />
     </>
   );
 }

@@ -38,7 +38,7 @@ useEffect(() => {
     <section className="flex-col lg:px-16 lt:py-5 lt:px-4 md:py-8 md:px-8 py-8 px-4 items-start lg:gap-8 lt:gap-6 md:gap-6 gap-2 lt:mx-4 self-stretch">
       <ProductCard data={cardsToDisplay} />
       <Buttons6 
-      className=" m-auto self-stretch active:underline" 
+      className=" m-auto self-stretch active:underline md:pt-8 pt-4" 
       onClick={() => navigate("/marketplace")}>
         <span className="text-sm font-bold" >Click to shop more</span>
       </Buttons6>

@@ -42,8 +42,8 @@ const Hero = () => {
           doorsteps.
         </p>
         </div>
-        <Link to="/marketplace" className="">
-        <Buttons className="group lg:self-center md:self-center self-stretch">
+        <Link to="/marketplace" className="flex w-full lg:w-auto md:w-auto">
+        <Buttons className="group md:w-auto w-full lg:self-center md:self-center self-stretch">
            <span className="group-active:font-bold md:font-normal transition-all duration-150">Shop Foodstuff</span>
       <MdKeyboardArrowRight
         className="hidden md:flex flex-col justify-center items-center gap-[0.625rem] transition-all duration-150 group-active:scale-150"

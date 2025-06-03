@@ -22,13 +22,13 @@ export default function CustomDropdown({ options, value, onChange, className = "
         onClick={() => setOpen(!open)}
         className="flex items-center justify-center flex-1 w-full bg-white px-4 pt-2 pb-1 gap-2 text-left focus:outline-none"
       >
-        <span className="flex items-center gap-2 text-xs font-bold text-[#686868]">
+        <span className='flex items-center gap-2 text-xs font-bold text-[#686868]'>
           {buttonLabel}
         </span>
-        <FaChevronDown className="gap-2 h-4 w-4 text-[#686868]" />
+        <FaChevronDown className={`gap-2 h-4 w-4 text-[#686868] ${open ? "rotate-180" : "rotate-0"}`} />
       </button>
       {open && (
-        <ul className="absolute z-10 mt-2 w-full bg-white max-h-60 overflow-auto">
+        <ul className="absolute flex flex-col z-10 mt-2 w-full justify-center bg-white gap-4">
           {options.map((opt, idx) => (
             <li
               key={opt.value}
@@ -36,8 +36,8 @@ export default function CustomDropdown({ options, value, onChange, className = "
                 onChange(opt.value);
                 setOpen(false);
               }}
-              className={`flex items-center gap-5 text-sm font-bold px-4 py-2 cursor-pointer text-[#424242] ${
-                opt.value === value ? "bg-[#f3f4f6] font-semibold" : ""
+              className={`flex items-center gap-2 text-sm font-bold px-4 py-2 cursor-pointer text-[#424242] ${
+                opt.value === value ? "bg-[#f3f4f6] font-bold" : ""
               }`}
             >
               {idx === 0 ? "All" : opt.label}

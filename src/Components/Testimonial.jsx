@@ -28,7 +28,7 @@ function Testimonial({ data }) {
     customPaging: (i) => (
       <div
         className="md:w-3 md:h-3 w-2 h-2 rounded-full opacity-75 hover:opacity-100 cursor-pointer transition-all duration-300"
-        style={{ border: "2px solid #09AF54" }}
+        style={{ border: "1px solid #09AF54" }}
       ></div>
     ),
   };

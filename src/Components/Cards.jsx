@@ -7,7 +7,7 @@ function Cards({ data }) {
       <div className="md:hidden flex flex-col py-8 px-5 items-start self-stretch bg-[#FAFAFA] gap-8">
         <header className="flex flex-col justify-center items-start gap-4 self-stretch">
           <div className="flex flex-col items-start gap-4 self-stretch">
-            <div className="flex justify-center items-center p-2 gap-2 bg-text[#E6F7EE] rounded-lg">
+            <div className="flex justify-center items-center p-2 gap-2 bg-[#E6F7EE] rounded-lg">
               <h2 className="text-[0.625rem] font-bold leading-[150%] text-[#09AF54] ">
                 CATEGORIES
               </h2>

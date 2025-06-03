@@ -52,14 +52,14 @@ const Carousel = () => {
     customPaging: (i) => (
       <div
         className="md:w-3 md:h-3 w-2 h-2 rounded-full opacity-75 hover:opacity-100 cursor-pointer transition-all duration-300"
-        style={{ border: "2px solid #09AF54" }}
+        style={{ border: "1px solid #09AF54" }}
       ></div>
     ),
   
   };
 
   return (
-    <section className="carousel-section w-full rounded-3xl md:h-auto h-[256px] gap-4 self-stretch lg:mx-auto overflow-hidden" aria-label="Promotional Carousel">
+    <section className="carousel-section w-full md:rounded-3xl rounded-lg md:h-auto h-[256px] gap-4 self-stretch lg:mx-auto overflow-hidden" aria-label="Promotional Carousel">
       <Slider {...settings} className="">
         {CarouselData.map((item, idx) => (
           <article
@@ -75,7 +75,7 @@ const Carousel = () => {
               loading="lazy"
             />
 
-            <div className="absolute inset-0 bg-black bg-opacity-30 flex items-end rounded-3xl ">
+            <div className="absolute inset-0 bg-black bg-opacity-30 flex items-end md:rounded-3xl rounded-lg ">
               <p className="text-white lg:text-[2rem] md:text-[1.75rem] text-xl font-bold lg:px-12 lt:8 md:px-8 px-4 pb-16 leading-tight">
                 {item.alt.split("\n").map((line, index) => (
                   <React.Fragment key={index}>

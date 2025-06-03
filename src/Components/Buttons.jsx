@@ -74,7 +74,7 @@ function Buttons5({children, icon, className, onClick}) {
 // Orange Tetiary button
 function Buttons6({children, icon, className, onClick}) {
   return (
-    <button className={`flex justify-center items-center md:font-normal font-bold md:py-2 md:px-4 py-[0.625rem] px-2 md:p-2 gap-2 lg:text-base md:text-sm text-xs text-[#FF6F61] bg-inherit md:hover:text-[#E86558] md:active:font-bold  md:hover:bg-[#FAFAFA] active:bg-[#FAFAFA] active:text-[#B54F45] md:hover:underline md:active:underline rounded-lg ${className}`}
+    <button className={`flex justify-center items-center md:font-normal font-bold md:py-2 md:px-4 py-[0.625rem] px-2 md:p-2 gap-2 lg:text-base md:text-sm text-xs text-[#FF6F61] bg-inherit md:hover:text-[#E86558] md:active:font-bold active:text-[#B54F45] md:hover:underline md:active:underline rounded-lg ${className}`}
     onClick={onClick}
     >
       {children}{icon}
