@@ -4,6 +4,7 @@ import { products } from "../data/cardData";
 import CustomDropdown from "../Components/CustomDropdown";
 import BreadCrumbs from "../Components/BreadCrumbs";
 import ProductCard from "../Components/ProductCard";
+import { useSearch } from "../Contexts/SearchContext";
 
 // Prepare dropdown options
 const categories = [
@@ -22,36 +23,68 @@ const sortOptions = [
   { value: "name-desc", label: "Name: Z → A" },
 ];
 
-function MarketPlace({ searchQuery}) {
+function MarketPlace() {
+  const { searchQuery } = useSearch();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [sortOption, setSortOption] = useState("default");
 
   // Filtering and searching
-  const filtered = useMemo(() => {
+
+    // Search
+    // if (searchQuery && searchQuery.trim() !== "") {
+    //   const q = searchQuery.trim().toLowerCase();
+    //   result = result.filter(
+    //     p =>
+    //       p.name.toLowerCase().includes(q) ||
+    //       (p.category && p.category.toLowerCase().includes(q))
+    //   );
+    // }
+
+
+    // Category
+  //   if (selectedCategory !== "All") {
+  //     result = result.filter(
+  //       p =>
+  //         p.category &&
+  //         p.category.trim().toLowerCase() === selectedCategory.trim().toLowerCase()
+  //     );
+  //   }
+  //   return result;
+  // }, [searchQuery, selectedCategory]);
+
+
+
+  // Filtering: search + category
+  const filteredProducts = useMemo(() => {
     let result = products;
+
     // Search
     if (searchQuery && searchQuery.trim() !== "") {
       const q = searchQuery.trim().toLowerCase();
       result = result.filter(
-        p =>
+        (p) =>
           p.name.toLowerCase().includes(q) ||
           (p.category && p.category.toLowerCase().includes(q))
       );
     }
+
     // Category
     if (selectedCategory !== "All") {
       result = result.filter(
-        p =>
+        (p) =>
           p.category &&
           p.category.trim().toLowerCase() === selectedCategory.trim().toLowerCase()
       );
     }
+
     return result;
   }, [searchQuery, selectedCategory]);
 
+
+
   // Sorting
   const sorted = useMemo(() => {
-    let result = [...filtered];
+    let result = [...filteredProducts];
     if (sortOption === "price-asc") {
       result.sort((a, b) => a.price - b.price);
     } else if (sortOption === "price-desc") {
@@ -62,7 +95,7 @@ function MarketPlace({ searchQuery}) {
       result.sort((a, b) => b.name.localeCompare(a.name));
     }
     return result;
-  }, [filtered, sortOption]);
+  }, [filteredProducts, sortOption]);
 
   const buttonCategories = categories;
 
@@ -111,6 +144,9 @@ function MarketPlace({ searchQuery}) {
           <section className="lg:pt-0 lg:pb-8 lg:px-16 md:py-4 md:px-8 px-4 pb-8 gap-2">
               <ProductCard data={sorted} disableLimit={true}
               />
+              {/* <ProductCard data={filteredProducts}
+              /> */}
+              
           </section>
         
         <div className="flex md:py-10 md:px-4 py-8 px-8 items-center self-stretch bg-[#FF6F61]">

@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { IoSearch } from "react-icons/io5";
 import { IoIosClose } from "react-icons/io";
+import { useSearch } from "../Contexts/SearchContext";
+import { useNavigate } from "react-router-dom";
 
-function SlidingSearch({ onSearch }) {
+function SlidingSearch() {
   const [open, setOpen] = useState(false);
   const inputRef = useRef(null);
   const containerRef = useRef(null);
@@ -10,6 +12,8 @@ function SlidingSearch({ onSearch }) {
   const [isInputFocused, setIsInputFocused] = useState(false);
   const handleFocus = () => setIsInputFocused(true);
   const handleBlur = () => setIsInputFocused(false);
+  const { setSearchQuery } = useSearch();
+  const navigate = useNavigate();
 
   // Click outside to close handler
   useEffect(() => {
@@ -44,12 +48,10 @@ function SlidingSearch({ onSearch }) {
   // Handle search event (button click or Enter)
   const handleSearch = () => {
     if (query.trim() !== "") {
-      if (onSearch) {
-        onSearch(query);
-      } else {
-        // Default: alert for demo purposes
-        alert("Searching for: " + query);
-      }
+     setSearchQuery(query);
+      setQuery("");
+      setOpen(false);
+      navigate("/marketplace");
     }
   };
 
@@ -98,6 +100,8 @@ function SlidingSearch({ onSearch }) {
           onKeyDown={handleKeyDown}
           onFocus={handleFocus}
           onBlur={handleBlur}
+          inputMode="search"
+          autoComplete="off"
           className={`
              bg-transparent outline-none
             px-1 text-base w-0 opacity-0

@@ -12,42 +12,32 @@ import Product from "./Pages/Product.jsx";
 import ScrollToTop from "./Components/ScrollToTop";
 import { CartProvider } from "./Components/CartContext";
 import { Toaster } from "react-hot-toast";
+import { SearchProvider } from "./Contexts/SearchContext.jsx";
 
 function App() {
-  const [searchQuery, setSearchQuery] = useState("");
-
-  function handleSearch(query) {
-    setSearchQuery(query);
-  }
   return (
-    <CartProvider>
-      <Router>
-        <Toaster />
-        <ScrollToTop />
-        <div className="overflow-hidden">
-          <DashBoard onSearch={handleSearch} searchQuery={searchQuery} />
-          <HamburgerMenu />
-          <div className="md:pt-[8rem] pt-[7.5rem]">
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route
-                path="/marketplace"
-                element={
-                  <MarketPlace
-                    searchQuery={searchQuery}
-                    onSearch={handleSearch}
-                  />
-                }
-              />
-              <Route path="/marketplace/:productId" element={<Product />} />
-            </Routes>
+    <SearchProvider>
+      <CartProvider>
+        <Router>
+          <Toaster />
+          <ScrollToTop />
+          <div className="overflow-hidden">
+            <DashBoard />
+            <HamburgerMenu />
+            <div className="md:pt-[8rem] pt-[7.5rem]">
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/marketplace" element={<MarketPlace />} />
+                <Route path="/marketplace/:productId" element={<Product />} />
+              </Routes>
+            </div>
+            <Subscription />
+            <Footer data={footerData} />
+            <WhatsappBtn />
           </div>
-          <Subscription />
-          <Footer data={footerData} />
-          <WhatsappBtn />
-        </div>
-      </Router>
-    </CartProvider>
+        </Router>
+      </CartProvider>
+    </SearchProvider>
   );
 }
 

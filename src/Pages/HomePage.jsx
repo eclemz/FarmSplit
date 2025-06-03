@@ -7,10 +7,9 @@ import Testimonial from "../Components/Testimonial";
 import FaqSection from "../Components/FaqSection";
 import Subscription from "../Components/Subscription";
 import Shelf from "../Components/Shelf";
-import { Buttons6 } from "../Components/Buttons";
+import { useSearch } from "../Contexts/SearchContext";
 import {
   cardData1,
-  cardData2,
   cardData3,
   cardData4,
   faqs,
@@ -18,6 +17,7 @@ import {
 } from "../data/cardData";
 
 function Home() {
+  const { searchQuery } = useSearch();
   return (
     <>
       <Hero />

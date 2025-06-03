@@ -8,13 +8,17 @@ import SlidingSearch from "./SliddingSearch";
 import { Typewriter } from "react-simple-typewriter";
 import { useCart } from "./CartContext";
 import Cart from "./Cart";
+import { useSearch } from "../Contexts/SearchContext";
+import { useNavigate } from "react-router-dom";
 
 
-const DashBoard = ({ onSearch, searchQuery }) => {
+const DashBoard = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [query, setQuery] = useState("");
+   const { setSearchQuery } = useSearch();
   const [isInputFocused, setIsInputFocused] = useState(false);
   const inputRef = useRef(null);
+  const navigate = useNavigate();
 
   // Array of placeholder texts
   const placeholders = [
@@ -36,15 +40,14 @@ const DashBoard = ({ onSearch, searchQuery }) => {
     }
   };
 
-  const handleSearch = (e) => {
-    if (e) e.preventDefault(); // Prevent form submit reload
+   const handleSearch = (e) => {
+    if (e) e.preventDefault();
     if (query.trim() !== "") {
-      if (onSearch) {
-        onSearch(query);          // send query to parent
-        setQuery("");             // clear input after search
-      } 
-      inputRef.current.blur();
+      setSearchQuery(query);
+      setQuery("");
+      navigate("/marketplace");
     }
+    inputRef.current.blur();
   };
 
   const handleKeyDown = (e) => {
@@ -55,7 +58,7 @@ const DashBoard = ({ onSearch, searchQuery }) => {
     setQuery("");
     if (inputRef.current) inputRef.current.focus();
     if (e) e.preventDefault();
-    if (onSearch) onSearch("");
+   setSearchQuery("");
   };
 
   const handleClose = () => setIsVisible(false);

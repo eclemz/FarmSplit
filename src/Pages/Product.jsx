@@ -27,7 +27,7 @@ function boldNumberRangesWithBreaks(text) {
   });
 }
 
-function Product() {
+function Product({data}) {
   const { productId } = useParams();
   const [open, setOpen] = useState(false);
   const [cols, setCols] = useState(getCols(window.innerWidth));
@@ -73,6 +73,9 @@ function Product() {
         Product not found. <Link to="/marketplace">Go back</Link>
       </div>
     );
+  }
+  if (!data || data.length === 0) {
+    return <div>No products found.</div>;
   }
   
   return (
