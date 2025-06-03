@@ -83,7 +83,7 @@ function SlidingSearch({ onSearch }) {
           ${open ? "bg-white border border-[#B54F45] rounded-md p-1" : ""}
           ${
             open
-              ? "w-[16rem] absolute right-0 top-1/2 -translate-y-1/2 z-20 shadow-sm shadow-[#B54F45]"
+              ? "w-[15rem] absolute right-0 top-1/2 -translate-y-1/2 z-20 shadow-sm shadow-[#B54F45]"
               : ""
           }
         `}
@@ -101,7 +101,7 @@ function SlidingSearch({ onSearch }) {
           className={`
              bg-transparent outline-none
             px-1 text-xs w-0 opacity-0
-            ${open ? "w-[16rem] opacity-100" : ""}
+            ${open ? "w-[15rem] opacity-100" : ""}
           `}
         />
 
