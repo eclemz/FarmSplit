@@ -28,7 +28,7 @@ export default function CustomDropdown({ options, value, onChange, className = "
         <FaChevronDown className={`gap-2 h-4 w-4 text-[#686868] ${open ? "rotate-180" : "rotate-0"}`} />
       </button>
       {open && (
-        <ul className="absolute flex flex-col z-10 mt-2 p-3 w-[13.5rem] -left-3 justify-center bg-white gap-4 shadow-lg ">
+        <ul className="absolute flex flex-col z-10 mt-2 p-3 w-[13rem] -left-3 justify-center bg-white gap-4 shadow-lg ">
           {options.map((opt, idx) => (
             <li
               key={opt.value}
