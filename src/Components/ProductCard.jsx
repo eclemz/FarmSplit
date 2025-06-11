@@ -24,12 +24,12 @@ function ProductCard({ data }) {
           <Link to={`/marketplace/${encodeURIComponent(card.id)}`}
           key={card.id}>
             <div  
-            className="flex flex-col items-start flex-1 border overflow-hidden border-[#C4C4C4] lg:rounded-2xl lt:rounded-xl md:rounded-xl rounded-lg bg-[#FAFAFA]">
+            className="productCard lg:relative group flex flex-col items-start flex-1 border overflow-hidden  lg:rounded-2xl lt:rounded-xl md:rounded-xl rounded-lg bg-[#FAFAFA] transition-all duration-200">
               <div className="flex flex-col items-start lg:gap-2 lt:gap-[0.394rem] md:gap-[0.394rem] gap-1 self-stretch">
                 <img src={card.images} alt="" className="flex md:flex-shrink-0 flex-1 self-stretch" />
               </div>
               
-              <div className="flex flex-col justify-center items-start md:p-2 p-2 md:gap-2 gap-1 self-stretch">
+              <div className="flex flex-col justify-center items-start md:px-2 md:pt-2 md:pb-14 p-2 md:gap-2 gap-1 self-stretch">
                 <span className="flex items-center gap-2 self-stretch lg:text-xs md:text-[0.635rem] text-[0.5rem] font-semibold text-[#FF6F61] leading-[140%]">
                   {card.category}
                 </span> 
@@ -45,8 +45,8 @@ function ProductCard({ data }) {
                     <p className="text-sm text-[#C4C4C4]">(10)</p>
                 </span>
                 </div>
-                
-                <Buttons6 className='group self-stretch' onClick={(e) => handleAddToCart(card, 1, e)}
+              
+                <Buttons6 className='lg:absolute lg:bottom-2 lg:right-20 group lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-200 self-stretch' onClick={(e) => handleAddToCart(card, 1, e)}
                 type="button">
                    <span className="group-active:text-[#B54F45] transition-all duration-150"> Add to cart </span>
                     <MdOutlineShoppingCart className="group-active:text-[#B54F45] group-hover:text-[#E86558] transition-all duration-150 h-3 w-3 text-[#FF6F61] scale-80 cursor-pointer shrink-0"/>

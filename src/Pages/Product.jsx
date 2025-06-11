@@ -74,12 +74,9 @@ function Product({data}) {
       </div>
     );
   }
-  if (!data || data.length === 0) {
-    return <div>No products found.</div>;
-  }
   
   return (
-    <main key={productId} >
+    <main key={productId}>
       <div className="fixed z-40 bg-white shadow w-full lg:px-16 lt:px-16 md:py-4 md:px-8 px-4" >
         <Breadcrumbs />
       </div>

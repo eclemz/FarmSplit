@@ -28,31 +28,6 @@ function MarketPlace() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [sortOption, setSortOption] = useState("default");
 
-  // Filtering and searching
-
-    // Search
-    // if (searchQuery && searchQuery.trim() !== "") {
-    //   const q = searchQuery.trim().toLowerCase();
-    //   result = result.filter(
-    //     p =>
-    //       p.name.toLowerCase().includes(q) ||
-    //       (p.category && p.category.toLowerCase().includes(q))
-    //   );
-    // }
-
-
-    // Category
-  //   if (selectedCategory !== "All") {
-  //     result = result.filter(
-  //       p =>
-  //         p.category &&
-  //         p.category.trim().toLowerCase() === selectedCategory.trim().toLowerCase()
-  //     );
-  //   }
-  //   return result;
-  // }, [searchQuery, selectedCategory]);
-
-
 
   // Filtering: search + category
   const filteredProducts = useMemo(() => {
@@ -144,8 +119,6 @@ function MarketPlace() {
           <section className="lg:pt-0 lg:pb-8 lg:px-16 md:py-4 md:px-8 px-4 pb-8 gap-2">
               <ProductCard data={sorted} disableLimit={true}
               />
-              {/* <ProductCard data={filteredProducts}
-              /> */}
               
           </section>
         
